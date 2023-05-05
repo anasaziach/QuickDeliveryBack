@@ -22,8 +22,8 @@ public class ServiceCreation implements CommandLineRunner {
     private ComposantsRepository composantsRepository;
     @Autowired
     private ImageRepository imageRepository;
-    public Article createArticle(String name, String Description, List<Composant> composants,List<Image> images){
-        Article article = new Article(name , Description , composants);
+    public Article createArticle(String name, String Description, List<Composant> composants,List<Image> images , Categories category){
+        Article article = new Article(name , Description , composants , category);
         composants.stream().forEach(x->x.setArticle(article));
         images.stream().forEach(x->x.setArticle(article));
         this.articleRepository.save(article);
@@ -49,8 +49,9 @@ public class ServiceCreation implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Article article = this.articleRepository.findById(1L).get();
-//        Image image = new Image(article,"https://img.taste.com.au/QboTdhiL/taste/2020/06/kfc-burger-america-162713-2.jpg");
-//        this.imageRepository.save(image);
+        Article article = this.articleRepository.findById(1L).get();
+        article.setCategory(Categories.healthy_food);
+//        System.out.println(article);
+        this.articleRepository.save(article);
     }
 }

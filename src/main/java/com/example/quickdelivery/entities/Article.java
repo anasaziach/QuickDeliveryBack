@@ -18,12 +18,9 @@ public class Article {
     private List<Composant> composantList = new ArrayList<>();
     @OneToMany(mappedBy = "article",fetch = FetchType.EAGER)
     private List<Image> images = new ArrayList<>();
-    @ManyToMany
-    @JoinTable(name = "food_category",
-            joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    private List<Categories> categoryList;
+    @Enumerated(EnumType.STRING)
+    private Categories category;
+
     private Long Total=0L;
 
 
@@ -75,6 +72,14 @@ public class Article {
         this.images = images;
     }
 
+    public Categories getCategory() {
+        return category;
+    }
+
+    public void setCategory(Categories category) {
+        this.category = category;
+    }
+
     public Article() {
 
     }
@@ -84,12 +89,13 @@ public class Article {
         this.setTotal(total);
     }
 
-    public Article(String name, String description, List<Composant> composantList) {
+    public Article(String name, String description, List<Composant> composantList , Categories category) {
         this.name = name;
         this.description = description;
         this.composantList = composantList;
         composantList.stream()
                 .forEach(x->this.Total+=x.getPrice());
+        this.category=category;
     }
 
     public Article(String name, String description, List<Composant> composantList, List<Image> images) {
@@ -109,6 +115,7 @@ public class Article {
                 ", description='" + description + '\'' +
                 ", composantList=" + composantList +
                 ", images=" + images +
+                ", category=" + category +
                 ", Total=" + Total +
                 '}';
     }

@@ -61,7 +61,7 @@ public class Composant {
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", article=" + article +
+//                ", article=" + article +
                 '}';
     }
 }
