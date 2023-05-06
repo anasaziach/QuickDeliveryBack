@@ -24,4 +24,8 @@ public class DisplayService {
     public List<Article> showItems(){
         return this.articleRepository.findAll();
     }
+    public Article retreiveArticleDetails(Long id){
+        return this.articleRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("item not found!!"));
+    }
 }

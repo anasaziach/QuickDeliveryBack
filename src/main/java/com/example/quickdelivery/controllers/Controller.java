@@ -7,6 +7,7 @@ import com.example.quickdelivery.services.ServiceCreation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,5 +22,9 @@ public class Controller {
     @GetMapping(path="/api/showItems")
     public List<Article> showItems(){
         return this.displayService.showItems();
+    }
+    @GetMapping(path = "api/fetchItemById")
+    public Article showItem(@RequestParam Long id){
+        return this.displayService.retreiveArticleDetails(id);
     }
 }
