@@ -5,11 +5,12 @@ import com.example.quickdelivery.entities.*;
 import com.example.quickdelivery.entities.user.User;
 import com.example.quickdelivery.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class ServiceCreation {
+public class ServiceCreation implements CommandLineRunner {
     @Autowired
     private ArticleRepository articleRepository;
     @Autowired
@@ -45,5 +46,10 @@ public class ServiceCreation {
         Commande commande = new Commande(articles);
         commande.setCart(cart);
         return this.commandeRepository.save(commande);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
     }
 }
