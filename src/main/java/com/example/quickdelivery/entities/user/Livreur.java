@@ -10,7 +10,7 @@ public class Livreur extends User{
     public Livreur() {
     }
 
-    public Livreur(Long id, String firstname, String lastname, String username, String phone, LocalDate birthday) {
-        super(id, firstname, lastname, username, phone, birthday);
+    public Livreur(String username) {
+        super(username);
     }
 }
