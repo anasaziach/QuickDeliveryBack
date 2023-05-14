@@ -2,14 +2,14 @@ package com.example.quickdelivery.services;
 
 
 import com.example.quickdelivery.entities.*;
+import com.example.quickdelivery.entities.user.User;
 import com.example.quickdelivery.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class ServiceCreation implements CommandLineRunner {
+public class ServiceCreation {
     @Autowired
     private ArticleRepository articleRepository;
     @Autowired
@@ -45,13 +45,5 @@ public class ServiceCreation implements CommandLineRunner {
         Commande commande = new Commande(articles);
         commande.setCart(cart);
         return this.commandeRepository.save(commande);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        Article article = this.articleRepository.findById(1L).get();
-        article.setCategory(Categories.healthy_food);
-//        System.out.println(article);
-        this.articleRepository.save(article);
     }
 }

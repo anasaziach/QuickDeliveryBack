@@ -1,32 +1,55 @@
 package com.example.quickdelivery.entities.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-import java.time.LocalDate;
+import com.example.quickdelivery.entities.Cart;
+import jakarta.persistence.*;
 
-@Entity
-public class User {
+@MappedSuperclass
+public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String firstname;
-    private String lastname;
+    private Long Id;
     private String username;
-    private String phone;
-    private LocalDate birthday;
+    @OneToOne
+    private Cart cart;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 
     public User() {
     }
 
-    public User(Long id, String firstname, String lastname, String username, String phone, LocalDate birthday) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public User(String username) {
         this.username = username;
-        this.phone = phone;
-        this.birthday = birthday;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "Id=" + Id +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

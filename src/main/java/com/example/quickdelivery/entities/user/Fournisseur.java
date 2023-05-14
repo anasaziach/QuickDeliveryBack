@@ -10,7 +10,7 @@ public class Fournisseur extends User{
     public Fournisseur() {
     }
 
-    public Fournisseur(Long id, String firstname, String lastname, String username, String phone, LocalDate birthday) {
-        super(id, firstname, lastname, username, phone, birthday);
+    public Fournisseur(String username) {
+        super(username);
     }
 }
