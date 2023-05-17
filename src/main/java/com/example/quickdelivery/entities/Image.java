@@ -55,5 +55,7 @@ public class Image {
         this.Uri= Uri;
     }
 
-
+    public Image(String uri) {
+        Uri = uri;
+    }
 }

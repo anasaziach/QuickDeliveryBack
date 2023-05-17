@@ -7,6 +7,7 @@ import com.example.quickdelivery.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -50,6 +51,12 @@ public class ServiceCreation implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        List<Composant> composants = new ArrayList<>();
+        List<Image> images = new ArrayList<>();
+        composants.add(new Composant("tomate",12L));
+        composants.add(new Composant("ognion",2L));
+        composants.add(new Composant("pain",4L));
+        images.add(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVb7M3-kkwI9AScXHaC0hrJJJ4N3uK2edSZxOQLFce&s"));
+        createArticle("burger","chickenBurger",composants,images,Categories.fast_food);
     }
 }

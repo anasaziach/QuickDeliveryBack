@@ -9,6 +9,7 @@ public class Composant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String name;
+    private String description;
     private Long price;
     @ManyToOne(fetch = FetchType.LAZY)
     private Article article;
@@ -41,6 +42,14 @@ public class Composant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getPrice() {
