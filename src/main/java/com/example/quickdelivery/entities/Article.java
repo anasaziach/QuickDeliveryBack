@@ -20,6 +20,7 @@ public class Article {
     private List<Image> images = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private Categories category;
+    private int rating = 0;
 
     private Long Total=0L;
 
@@ -54,6 +55,14 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public Long getTotal() {
